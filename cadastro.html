@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-center mb-4">Cadastro de Usuário</h2>
+        
+        <!-- Formulário de Cadastro -->
+        <form id="form-cadastro" onsubmit="return cadastrarUsuario()">
+            <!-- Nome de usuário -->
+            <div class="mb-3">
+                <label for="username" class="form-label">Nome de usuário</label>
+                <input type="text" class="form-control" id="username" required>
+            </div>
+            
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            
+            <!-- Senha -->
+            <div class="mb-3">
+                <label for="password" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            
+            <!-- Confirmar Senha -->
+            <div class="mb-3">
+                <label for="confirm-password" class="form-label">Confirmar Senha</label>
+                <input type="password" class="form-control" id="confirm-password" required>
+            </div>
+
+            <!-- Endereço -->
+            <div class="mb-3">
+                <label for="endereco" class="form-label">Endereço</label>
+                <input type="text" class="form-control" id="endereco" required>
+            </div>
+
+            <!-- Botão de Cadastro -->
+            <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+        </form>
+
+        <!-- Exibir mensagem de sucesso ou erro -->
+        <div id="mensagem" class="mt-3 text-center"></div>
+    </div>
+
+    <script>
+        function cadastrarUsuario() {
+            // Captura os valores dos campos
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const endereco = document.getElementById('endereco').value;
+            const mensagem = document.getElementById('mensagem');
+
+            // Valida se as senhas coincidem
+            if (password !== confirmPassword) {
+                mensagem.textContent = "As senhas não coincidem!";
+                mensagem.className = "text-danger";
+                return false; // Impede o envio do formulário
+            }
+
+            // Aqui você pode adicionar o código para salvar os dados do usuário (ex: enviar para um banco de dados)
+
+            // Exibe mensagem de sucesso
+            mensagem.textContent = `Usuário ${username} cadastrado com sucesso! Endereço: ${endereco}`;
+            mensagem.className = "text-success";
+
+            // Limpa os campos do formulário
+            document.getElementById('form-cadastro').reset();
+
+            return false; // Impede o recarregamento da página
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+Criar um painel adm, para cadastro de ingredientes,cadastrar novos lanches, configurações de comanda, enviar por watsap. 
